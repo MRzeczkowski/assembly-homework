@@ -15,14 +15,14 @@ start:
 	; używam cx bo nie jest teraz używany do niczego innego
 	pop cx ; pobieram godzine i minute ze stosu
 	mov dl, ch ; godzina
-	call itoa99
+	call wypisz_liczbe
 
 	mov ah, 02h
 	mov dl, ':'
 	int 21h
 
 	mov dl, cl ; minuta
-	call itoa99
+	call wypisz_liczbe
 
 	mov ah, 02h
 	mov dl, ':'
@@ -30,20 +30,20 @@ start:
 
 	pop cx ; pobieram sekunde i milisekunde ze stosu
 	mov dl, ch ; sekunda
-	call itoa99
+	call wypisz_liczbe
 
 	mov ah, 02h
 	mov dl, '.'
 	int 21h
 
 	mov dl, cl ; milisekunda
-	call itoa99
+	call wypisz_liczbe
 
 	mov ax, 4c00h
 	int 21h
 
 ;dl = liczba do wyświetlenia (od 0 do 99)
-itoa99:
+wypisz_liczbe:
 	push bx ; zapisanie rejestrów
 	push ax
 
