@@ -12,7 +12,8 @@ start:
 	push dx ; sekunda + milisekunda
 	push cx ; godzina + minuta
 
-	pop cx ; używam cx bo nie jest używany do niczego innego, pobieram godzine i minute ze stosu
+	; używam cx bo nie jest teraz używany do niczego innego
+	pop cx ; pobieram godzine i minute ze stosu
 	mov dl, ch ; godzina
 	call itoa99
 
