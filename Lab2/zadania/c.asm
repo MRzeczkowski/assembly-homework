@@ -2,10 +2,9 @@ cpu 386
 section .text
 org 100h
 
-ORG 100h
-
 start:
-    mov ax, -25590
+    xor dx, dx ; zeruje bo potrzebny do gornych bitow dla dodatniej liczby
+    mov ax, -32768 ; to jest najmniejsza wartość, maksymalnie 32767
 
     cmp ax, 0
     jl obsluz_ujemna
