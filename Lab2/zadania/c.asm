@@ -5,36 +5,51 @@ org 100h
 ORG 100h
 
 start:
-	mov ax, 354
-	call wypisz_liczbe
+    mov ax, -25590
+
+    cmp ax, 0
+    jl obsluz_ujemna
+
+    call wypisz_liczbe
+
+obsluz_ujemna:
+    mov bx, ax
+
+    mov dl, '-'
+    mov ah, 02h
+    int 21h
+
+    neg bx
+    xor dx, dx ; zeruje po wypisaniu '-', potrzebne do gornych bitow
+    mov ax, bx
 
 wypisz_liczbe:
     xor cx, cx
-    mov bl, 10d ; dzielnik
-	jmp wypisz_cyfry
+    mov bx, 10 ; dzielnik
+    jmp wypisz_cyfry
 
 wypisz_cyfry:
-	div bl ; AL = AX/10, AH = AX mod 10
-    push ax ; zapisanie na stos żeby później wypisać, interesuje tylko al
-    xor ah, ah ; zeruję resztę
+    idiv bx ; AX = DX:AX/10, DX = DX:AX mod 10
+    push dx ; zapisanie na stos żeby później wypisać, interesuje tylko dx
+    xor dx, dx ; zeruję resztę
 
     inc cl ; zapisuję ile jest cyfr
-    cmp al, 0
+    cmp ax, 0
     jnz wypisz_cyfry
     jz wypisz_cyfry_ze_stosu
 
 wypisz_cyfry_ze_stosu:
     pop bx
 
-	mov dl, bh
+    mov dl, bl
     add dl, 30h ; cyfry w ASCII zaczynają się od 30h
-	mov ah, 02h
-	int 21h
+    mov ah, 02h
+    int 21h
 
     dec cl
     jnz wypisz_cyfry_ze_stosu
     jmp zakoncz
 
 zakoncz:
-	mov ax, 4c00h
-	int 21h
+    mov ax, 4c00h
+    int 21h
