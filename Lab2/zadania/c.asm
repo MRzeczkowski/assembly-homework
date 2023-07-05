@@ -28,7 +28,7 @@ wypisz_liczbe:
     jmp wypisz_cyfry
 
 wypisz_cyfry:
-    idiv bx ; AX = DX:AX/10, DX = DX:AX mod 10
+    div bx ; AX = DX:AX/10, DX = DX:AX mod 10
     push dx ; zapisanie na stos żeby później wypisać, interesuje tylko dx
     xor dx, dx ; zeruję resztę
 

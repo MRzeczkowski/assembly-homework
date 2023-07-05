@@ -1,4 +1,4 @@
-;Program demonstrujący działanie stosu. Najpierw wrzucamy 5 znaków na stos, a potem je zdejmujemy i pokazujemy na ekranie (w odwrotnej kolejności!)
+;Program demonstrujący działanie stosu. Najpierw wrzucamy 5 znaków na stos, a potem je zdejmujemy i pokazujemy na ekranie
 cpu 386
 
 section .text
@@ -12,7 +12,7 @@ petla:
 	movzx bx, al ; Tu upewniam się, że dwa bajty wrzucane na stos mają wartość równą oryginalnej zawartości al
 	push bx
 	loop petla
-	
+
 mov cx,5
 mov ah,2
 
