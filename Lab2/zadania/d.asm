@@ -30,7 +30,7 @@ wczytaj_liczbe:
     mov bx, dx
     xor cx, cx
     xor di, di
-    mov ah, 0Ah ; dx ustawiony na bufor_liczba w czysc_bufor
+    mov ah, 0Ah
     int 21h
 
     xor ax, ax
@@ -54,7 +54,7 @@ czysc_bufor:
     mov cl, al
     dec cl
     mov bx, bufor_liczba
-    mov dx, bx ;zaraz wywolana funkcja zapisujaca do bufora
+    mov dx, bx
     xor ax, ax
     mov byte al, [bufor_pierwsza_kom]
     mov [bx], al
@@ -69,10 +69,10 @@ zapisz_ze_ujemna:
     neg si
     inc bx
     dec cl
-    dec di ;jeden z pobranych znakow to minus wiec zmniejsz zapisana na pozniej ilosc pobranych znakow
+    dec di ; jeden z pobranych znakow to '-', wiec zmniejszam ilosc pobranych znakow do konwersji
 
 ustaw_wskazniki:
-    mov dx, bx ;bx ustawiony na pierwsza pobrana CYFRE - skopiuj adres na etap konwersji
+    mov dx, bx ; bx ustawiony na pierwsza cyfre
     mov bx, cx
     ret
 
@@ -139,9 +139,9 @@ zakoncz:
 wypisz_nowa_linia:
     push ax
     push dx
-    mov	dx, nowa_linia
+    mov dx, nowa_linia
     mov ah, 9
-    int	21h
+    int 21h
     pop dx 
     pop ax
     ret

@@ -9,8 +9,8 @@ start:
 
     call sprawdz_prog
 
-    mov	ax, 4C00h
-    int	21h
+    mov ax, 4C00h
+    int 21h
 
 sprawdz_prog:
     mov word bx, [prog_h]
@@ -42,8 +42,8 @@ wypisz_rowny:
     ret
 
 wypisz:
-    mov	ah, 9
-    int	21h
+    mov ah, 9
+    int 21h
     ret
 
 section .data
