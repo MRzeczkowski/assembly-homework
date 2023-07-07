@@ -25,79 +25,79 @@ int main() {
     switch (rozmiar)
     {
     case 1:
-        rozmiar = sizeof(char);
+        rozmiar = sizeof(unsigned char);
         a = malloc(dlugosc * rozmiar);
         b = malloc(dlugosc * rozmiar);
         wynik = malloc(dlugosc * rozmiar);
 
         for (int i = 0; i < dlugosc; i++) {
-            ((char*)a)[i] = (char)(rand() % 10);
-            ((char*)b)[i] = (char)(rand() % 10);
+            ((unsigned char*)a)[i] = (unsigned char)(rand() % 10);
+            ((unsigned char*)b)[i] = (unsigned char)(rand() % 10);
         }
 
         mnozenie_tablic(a, b, wynik, dlugosc, rozmiar);
 
         for (int i = 0; i < dlugosc; i++) {
-            printf("%u * %u = %u\n", ((char*)a)[i], ((char*)b)[i], ((char*)wynik)[i]);
+            printf("%u * %u = %u\n", ((unsigned char*)a)[i], ((unsigned char*)b)[i], ((unsigned char*)wynik)[i]);
         }
 
         break;
 
     case 2:
-        rozmiar = sizeof(short);
+        rozmiar = sizeof(unsigned short);
         a = malloc(dlugosc * rozmiar);
         b = malloc(dlugosc * rozmiar);
         wynik = malloc(dlugosc * rozmiar);
 
         for (int i = 0; i < dlugosc; i++) {
-            ((short*)a)[i] = (short)(rand() % 10);
-            ((short*)b)[i] = (short)(rand() % 10);
+            ((unsigned short*)a)[i] = (unsigned short)(rand() % 10);
+            ((unsigned short*)b)[i] = (unsigned short)(rand() % 10);
         }
 
         mnozenie_tablic(a, b, wynik, dlugosc, rozmiar);
 
         for (int i = 0; i < dlugosc; i++) {
-            printf("%u * %u = %u\n", ((short*)a)[i], ((short*)b)[i], ((short*)wynik)[i]);
+            printf("%u * %u = %u\n", ((unsigned short*)a)[i], ((unsigned short*)b)[i], ((unsigned short*)wynik)[i]);
         }
 
         break;
 
     case 4:
-        rozmiar = sizeof(int);
+        rozmiar = sizeof(unsigned int);
         a = malloc(dlugosc * rozmiar);
         b = malloc(dlugosc * rozmiar);
         wynik = malloc(dlugosc * rozmiar);
 
         for (int i = 0; i < dlugosc; i++) {
-            ((int*)a)[i] = rand() % 10;
-            ((int*)b)[i] = rand() % 10;
+            ((unsigned int*)a)[i] = rand() % 10;
+            ((unsigned int*)b)[i] = rand() % 10;
         }
 
         mnozenie_tablic(a, b, wynik, dlugosc, rozmiar);
 
         for (int i = 0; i < dlugosc; i++) {
-            printf("%u * %u = %u\n", ((int*)a)[i], ((int*)b)[i], ((int*)wynik)[i]);
+            printf("%u * %u = %u\n", ((unsigned int*)a)[i], ((unsigned int*)b)[i], ((unsigned int*)wynik)[i]);
         }
 
         break;
 
         case 8:
-        rozmiar = sizeof(long long);
+        rozmiar = sizeof(unsigned long long);
         a = malloc(dlugosc * rozmiar);
         b = malloc(dlugosc * rozmiar);
         wynik = malloc(dlugosc * rozmiar);
 
         for (int i = 0; i < dlugosc; i++) {
-            ((long long*)a)[i] = rand() % 10;
-            ((long long*)b)[i] = rand() % 10;
+            ((unsigned long long*)a)[i] = (unsigned long long)(rand() % 10);
+            ((unsigned long long*)b)[i] = (unsigned long long)(rand() % 10);
         }
 
         mnozenie_tablic(a, b, wynik, dlugosc, rozmiar);
 
-        // Wyniki nie są do końca poprawne, pewnie chodzi o to, że long long zajmuje 64bit'y.
-        // To wymagałoby odpowiedniego obsłużenia tego po stronie procedury w assemblerze.
+        // Wyniki nie są do zawsze poprawne, prawdopodobnie dlatego że unsigned long long zajmuje 64bit'y.
+        // To wymagałoby odpowiedniego obsłużenia po stronie procedury w assemblerze.
         for (int i = 0; i < dlugosc; i++) {
-            printf("%lli * %lli = %lli\n", ((long long*)a)[i], ((long long*)b)[i], ((long long*)wynik)[i]);
+            printf("%lli * %lli = %lli\n", ((unsigned long long*)a)[i], ((unsigned long long*)b)[i], ((unsigned long long*)wynik)[i]);
         }
 
         break;
