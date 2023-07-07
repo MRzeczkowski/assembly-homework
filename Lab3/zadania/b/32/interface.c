@@ -1,26 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <stdbool.h>
 
-extern int _mnozenie (int a, int b);
+extern float _oblicz(float a, float b, float c, float d, float e);
 
-int mnozenie (int a, int b);
+float oblicz(float a, float b, float c, float d, float e);
 
-int a, b;
+int main() {
+    float a, b, e, c, d;
 
-int main()
-{
-    printf("a = ");
+    printf("Podaj liczby rzeczywiste (a, b, c, d, e): ");
+    scanf("%f %f %f %f %f", &a, &b, &c, &d, &e);
 
-    scanf("%d", &a);
-
-    printf("b = ");
-
-    scanf("%d", &b);
-
-    printf("%d * %d = %d\n", a, b, mnozenie(a,b));
-
+    printf("Wynik: %.20f\n", oblicz(a, b, c, d, e)); // 20 miejsc po przecinku zeby pokazac precyzje
     return 0;
 }
 

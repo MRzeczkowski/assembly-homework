@@ -1,18 +1,15 @@
-﻿	section .text use32
+﻿    section .text use32
+    global    _mnozenie
 
-	global	_mul
+    _mnozenie:
+        %idefine a [ebp+8]
+        %idefine b [ebp+12]
 
-	_mul:
+        push ebp
+        mov ebp, esp
 
-	%idefine	a	[ebp+8]
-	%idefine	b	[ebp+12]
+        mov eax, a ;
+        imul eax, b ; operacja mnożenia eax * zmienna b (wrzucamy wynik do eax)
 
-		push	ebp
-		mov	ebp, esp
-
-		mov eax, a ;
-		imul eax, b ; operacja mnożenia eax * zmienna b (wrzucamy wynik do eax)
-
-	; LEAVE = mov esp, ebp / pop ebp
-		leave
-		ret
+        leave
+        ret
